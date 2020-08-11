@@ -1,0 +1,33 @@
+<h2>Total Rounds</h2>
+
+<hr />
+<div *ngIf="result">
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Total</th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Total rounds played</td>
+                    <td> {{result.all}}</td>
+                </tr>
+                <tr>
+                    <td>Total Wins for first players </td>
+                    <td> {{result.firstWins}}</td>
+                </tr>
+                <tr>
+                    <td>Total Wins for second players</td>
+                    <td> {{result.secondWins}}</td>
+                </tr>
+                <tr>
+                    <td>Total draws</td>
+                    <td> {{result.draws}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
