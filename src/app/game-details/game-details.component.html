@@ -1,0 +1,26 @@
+<div class="btn-group" role="group">
+    <button (click)="playRound()" class="btn btn-outline-primary">Play Round</button>
+    <button (click)="restart()" class="btn btn-outline-primary">Restart</button>
+</div>
+
+<div *ngIf="rounds">
+    <div class="panel-body">
+
+        <h2>Count: {{rounds.length}}</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Player Chose</th>
+                    <th>Second Player Chose </th>
+                    <th>Result</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let round of rounds">
+                    <td>{{round.firstPlayerChose}}</td>
+                    <td>{{round.secondPlayerChose}}</td>
+                    <td>{{round.result}}</td>
+                </tr>
+            </tbody>
+        </table>
