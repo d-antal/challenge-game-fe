@@ -1,3 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-row:nth-child(even){
+  background-color: white;
+  }
+
+.mat-row:nth-child(odd){
+  background-color:  aliceblue;
+  }
+
+.mat-header-cell {    
+  background-color: #4CAF50;   
+  color: white;     
+  }
+
+table {
+    width: 100%;
+} 
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 14px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 20px;
+  transition-duration: 0.6s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white; 
+  color:#4CAF50; 
+  border: 2px solid #4CAF50;
+  margin: 4px 50px;
+}
+
+.button1:hover {
+  background-color: #4CAF50;
+  color: white;
+}

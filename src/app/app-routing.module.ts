@@ -7,7 +7,7 @@ const routes: Routes = [
 
   { path: 'lottoland/rock-paper-scissors/start-game', component: GameDetailsComponent },
   { path: 'lottoland/rock-paper-scissors/rounds-total', component: GameHistoryComponent },
-
+  { path: '', redirectTo: 'lottoland/rock-paper-scissors/start-game', pathMatch: 'full' }
 ];
 
 @NgModule({

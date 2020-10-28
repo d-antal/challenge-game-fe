@@ -1,33 +1,20 @@
-<h2>Total Rounds</h2>
-
-<hr />
 <div *ngIf="result">
-    <div class="panel-body">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Total</th>
-                    <th>Result</th>
-                </tr>
-            </thead>
+  <table mat-table [dataSource]="totalWins" class="mat-elevation-z8">
+    <ng-container matColumnDef="winner">
+      <th mat-header-cell *matHeaderCellDef> Wins </th>
+      <td mat-cell *matCellDef="let totalWin"> {{totalWin.winner}} </td>
+      <td mat-footer-cell *matFooterCellDef> Total </td>
+    </ng-container>
+    <ng-container matColumnDef="wins">
+      <th mat-header-cell *matHeaderCellDef> Total </th>
+      <td mat-cell *matCellDef="let totalWin"> {{totalWin.wins}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{result.draws +result.firstWins+result.secondWins}} </td>
+    </ng-container>
 
-            <tbody>
-                <tr>
-                    <td>Total rounds played</td>
-                    <td> {{result.all}}</td>
-                </tr>
-                <tr>
-                    <td>Total Wins for first players </td>
-                    <td> {{result.firstWins}}</td>
-                </tr>
-                <tr>
-                    <td>Total Wins for second players</td>
-                    <td> {{result.secondWins}}</td>
-                </tr>
-                <tr>
-                    <td>Total draws</td>
-                    <td> {{result.draws}}</td>
-                </tr>
-            </tbody>
-        </table>
-        
+    <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+    <tr mat-footer-row *matFooterRowDef="tableColumns"></tr>
+  </table>
+</div>
+
+<button (click)="goToGame()" class="button button1">Go To Game</button>

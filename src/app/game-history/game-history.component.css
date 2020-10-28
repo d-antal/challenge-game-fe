@@ -1,0 +1,18 @@
+.tr.mat-footer-row {
+   font-weight: bold;
+  }
+
+.game-container {
+   height: 600px;
+   overflow: auto;
+   width: 100%;
+  }
+
+.mat-table{
+  margin:50px;
+ }
+
+
+
+
+

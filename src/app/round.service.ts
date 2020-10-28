@@ -7,16 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class RoundService {
 
-  private baseUrl = 'http://localhost:8080/lottoland/rock-paper-scissors/api/v1/games';
+  private baseUrl = 'http://localhost:8080/lottoland/rock-paper-scissors/api/v1';
 
   constructor(private http: HttpClient) { }
 
   createRound(gameId: number, value: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/${gameId}/rounds`, value);
+    return this.http.post(`${this.baseUrl}/games/${gameId}/rounds`, value);
   }
 
   getRoundsByGame(gameId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${gameId}/rounds`);
+    return this.http.get(`${this.baseUrl}/games/${gameId}/rounds`);
   }
 
   getResult(): Observable<any> {

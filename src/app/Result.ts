@@ -4,7 +4,5 @@ export class Result {
   firstWins: number;
   secondWins: number;
   draws: number;
-  all: number;
-
 }
 

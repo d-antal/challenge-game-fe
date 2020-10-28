@@ -1,26 +1,38 @@
 <div class="btn-group" role="group">
-    <button (click)="playRound()" class="btn btn-outline-primary">Play Round</button>
-    <button (click)="restart()" class="btn btn-outline-primary">Restart</button>
+  <button (click)="startGame()" class="button button3">{{started?"Restart Game":"Start Game"}}</button>
 </div>
 
-<div *ngIf="rounds">
-    <div class="panel-body">
+<div *ngIf="started">
+  <div class="rounds-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
 
-        <h2>Count: {{rounds.length}}</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>First Player Chose</th>
-                    <th>Second Player Chose </th>
-                    <th>Result</th>
-                </tr>
-            </thead>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ROUND</th>
+        <td mat-cell *matCellDef="let round; let i = index"> {{round.id+1- (rounds.length>0?rounds[0].id : 0)}}. </td>
+      </ng-container>
 
-            <tbody>
-                <tr *ngFor="let round of rounds">
-                    <td>{{round.firstPlayerChose}}</td>
-                    <td>{{round.secondPlayerChose}}</td>
-                    <td>{{round.result}}</td>
-                </tr>
-            </tbody>
-        </table>
+      <ng-container matColumnDef="firstPlayerChose">
+        <th mat-header-cell *matHeaderCellDef>FIRST PLAYER</th>
+        <td mat-cell *matCellDef="let round"> {{round.firstPlayerChose}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="secondPlayerChose">
+        <th mat-header-cell *matHeaderCellDef>SECOND PLAYER</th>
+        <td mat-cell *matCellDef="let round"> {{round.secondPlayerChose}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="result">
+        <th mat-header-cell *matHeaderCellDef>RESULT</th>
+        <td mat-cell *matCellDef="let round"> {{getResultSring(round.result)}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="tableColumns; sticky: true;"></tr>
+      <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
+    </table>
+
+    <div *ngIf="rounds.length>9">
+      <mat-paginator #myPaginator [pageSizeOptions]="[10, 15, 30, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+  <button (click)="playRound()" class="button button1">Play Round</button>
+  <button (click)="goToTotal()" class="button button2">Total Page</button>

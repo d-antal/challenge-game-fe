@@ -1,38 +1,38 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouteConfigLoadStart } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
+
 import { GameService } from '../game.service';
 import { Game } from '../Game';
 import { RoundService } from '../round.service';
 import { Round } from '../Round';
-import { Observable } from 'rxjs';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-details',
   templateUrl: './game-details.component.html',
   styleUrls: ['./game-details.component.css']
 })
-export class GameDetailsComponent implements OnInit {
-
+export class GameDetailsComponent {
   id: any;
-  rounds: Round[]
+  rounds = new Array<Round>();
   game = new Game();
   randomChoose: String;
-
-  constructor(private route: ActivatedRoute, private router: Router,
-    private gameService: GameService, private roundService: RoundService) { }
-
-  ngOnInit() {
-    this.startGame();
-  }
-
-  restart() {
-    this.startGame();
-  }
+  tableColumns: string[] = ['id', 'firstPlayerChose', 'secondPlayerChose', 'result'];
+  dataSource = new MatTableDataSource<Round>(this.rounds);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+  started: boolean;
+  constructor(private gameService: GameService, private roundService: RoundService, private router: Router) { }
 
   loadRounds(id: number) {
     this.roundService.getRoundsByGame(this.id).subscribe(data => {
       console.log("getRounds: ", data)
       this.rounds = data;
+      this.dataSource = new MatTableDataSource(this.rounds);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     }, error => console.log("getRounds error: ", error));
   }
 
@@ -54,13 +54,19 @@ export class GameDetailsComponent implements OnInit {
 
   startGame() {
     this.gameService.createGame(this.game).subscribe(data => {
-      console.log("new game:", data)
+      console.log("new game: ", data)
       this.id = data["id"];
+      this.started = true;
       this.loadRounds(this.id);
     }, error => console.log("save new game error: ", error));
   }
 
+  getResultSring(result: String) {
+    return result === "DRAW" ? "Draw" : (result === "FIRST_PLAYER_WON" ? "1st Player" : "2nd Player");
+  }
+
+  goToTotal() {
+    this.router.navigate(["/lottoland/rock-paper-scissors/rounds-total"]);
+  }
+
 }
-
-
-
