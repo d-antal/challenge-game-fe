@@ -1,3 +1,11 @@
+# Install 
+Please add the Angular Material library:
+
+ng add @angular/material
++ custom themre: Indigo/Pink 
++ typography styles: Yes
++ Angular Material: Yes
+
 # RockPaperScissorsFe
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0-rc.7.
