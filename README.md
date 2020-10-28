@@ -2,9 +2,9 @@
 Please add the Angular Material library:
 
 ng add @angular/material
-+ custom themre: Indigo/Pink 
-+ typography styles: Yes
-+ Angular Material: Yes
+-custom theme: Indigo/Pink 
+-typography styles: Yes
+-browser animations: Yes
 
 # RockPaperScissorsFe
 
