@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./game-details.component.css']
 })
 export class GameDetailsComponent {
-  id: any;
+  gameId: any;
   rounds = new Array<Round>();
   game = new Game();
   randomChoose: String;
@@ -26,8 +26,8 @@ export class GameDetailsComponent {
   started: boolean;
   constructor(private gameService: GameService, private roundService: RoundService, private router: Router) { }
 
-  loadRounds(id: number) {
-    this.roundService.getRoundsByGame(this.id).subscribe(data => {
+  loadRounds(gameId: number) {
+    this.roundService.getRoundsByGame(gameId).subscribe(data => {
       console.log("getRounds: ", data)
       this.rounds = data;
       this.dataSource = new MatTableDataSource(this.rounds);
@@ -46,18 +46,18 @@ export class GameDetailsComponent {
   }
 
   playRound() {
-    this.roundService.createRound(this.id, this.getRound()).subscribe(data => {
+    this.roundService.createRound(this.gameId, this.getRound()).subscribe(data => {
       console.log("new round: ", data)
-      this.loadRounds(this.id);
+      this.loadRounds(this.gameId);
     }, error => console.log("save new round error: ", error));
   }
 
   startGame() {
     this.gameService.createGame(this.game).subscribe(data => {
       console.log("new game: ", data)
-      this.id = data["id"];
+      this.gameId = data["id"];
       this.started = true;
-      this.loadRounds(this.id);
+      this.loadRounds(this.gameId);
     }, error => console.log("save new game error: ", error));
   }
 

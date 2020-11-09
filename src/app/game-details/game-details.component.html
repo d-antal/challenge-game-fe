@@ -29,10 +29,11 @@
       <tr mat-header-row *matHeaderRowDef="tableColumns; sticky: true;"></tr>
       <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
     </table>
-
-    <div *ngIf="rounds.length>9">
-      <mat-paginator #myPaginator [pageSizeOptions]="[10, 15, 30, 50]" showFirstLastButtons></mat-paginator>
-    </div>
   </div>
+  <div>
+    <mat-paginator #myPaginator [pageSizeOptions]="[10, 15, 30, 50]" showFirstLastButtons></mat-paginator>
+  </div>
+
   <button (click)="playRound()" class="button button1">Play Round</button>
   <button (click)="goToTotal()" class="button button2">Total Page</button>
+</div>

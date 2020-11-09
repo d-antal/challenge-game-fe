@@ -1,12 +1,12 @@
 <div *ngIf="result">
   <table mat-table [dataSource]="totalWins" class="mat-elevation-z8">
     <ng-container matColumnDef="winner">
-      <th mat-header-cell *matHeaderCellDef> Wins </th>
+      <th mat-header-cell *matHeaderCellDef> PLAYER </th>
       <td mat-cell *matCellDef="let totalWin"> {{totalWin.winner}} </td>
       <td mat-footer-cell *matFooterCellDef> Total </td>
     </ng-container>
     <ng-container matColumnDef="wins">
-      <th mat-header-cell *matHeaderCellDef> Total </th>
+      <th mat-header-cell *matHeaderCellDef> WINS </th>
       <td mat-cell *matCellDef="let totalWin"> {{totalWin.wins}} </td>
       <td mat-footer-cell *matFooterCellDef> {{result.draws +result.firstWins+result.secondWins}} </td>
     </ng-container>

@@ -1,9 +1,8 @@
 .rounds-container {
-    height: 600px;
+    height: 540px;
     overflow: auto;
     width: 100%;
-  }
-
+}
 
 ::ng-deep .mat-sort-header-arrow {
     color: white;
@@ -12,27 +11,27 @@
 ::ng-deep .mat-paginator-container{
   background-color: #4CAF50;   
   color: white; 
- }
+}
 
 .button2{
   background-color: white; 
   color:#008CBA; 
   border: 2px solid #008CBA;
- }
+}
 
 .button2:hover {
   background-color: #008CBA;
   color: white;
-  }
+}
 
 .button3 {
   background-color: white; 
   color:  #4CAF50; 
   border: 2px solid #4CAF50;
   margin: 30px 450px;
-  }
+}
 
 .button3:hover {
   background-color: #4CAF50;
   color: white;
-  }
+}
